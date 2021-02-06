@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "FollowerFavorCarryLimitPatcher": {
+      "commandName": "Project",
+      "commandLineArgs": "run-patcher --GameRelease SkyrimSE --DataFolderPath \"Z:\\Synthesis Development\\Testing Environment\\Data\" --LoadOrderFilePath \"Z:\\Synthesis Development\\Testing Environment\\Plugins.txt\" --OutputPath \"E:\\Entertainment\\Games\\MO2 Installations\\DP NPC Appearance Merge\\overwrite\\FFCLpatcher.esp\"",
+      "workingDirectory": "E:\\Entertainment\\Games\\Mods\\Synthesis Solutions\\Follower Favor Carry Limit Patcher\\FollowerFavorCarryLimitPatcher"
+    }
+  }
+}

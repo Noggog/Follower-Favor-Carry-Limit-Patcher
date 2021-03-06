@@ -1,11 +1,11 @@
-using System;
-using System.Linq;
 using Mutagen.Bethesda;
-using Mutagen.Bethesda.Synthesis;
-using Mutagen.Bethesda.Skyrim;
-using System.Threading.Tasks;
-using System.IO;
 using Mutagen.Bethesda.FormKeys.SkyrimSE;
+using Mutagen.Bethesda.Skyrim;
+using Mutagen.Bethesda.Synthesis;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FollowerFavorCarryLimitPatcher
 {
@@ -68,7 +68,7 @@ namespace FollowerFavorCarryLimitPatcher
             foreach (var npc in state.LoadOrder.PriorityOrder.WinningOverrides<INpcGetter>())
             {
                 if (npc.Configuration.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.SpellList) || npc.EditorID == null || npc.Factions == null) continue;
-                
+
                 foreach (var faction in npc.Factions)
                 {
                     if (!faction.Faction.TryResolve(state.LinkCache, out var fac) || fac.EditorID != "PotentialFollowerFaction") continue;

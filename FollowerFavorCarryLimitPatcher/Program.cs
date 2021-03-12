@@ -28,10 +28,9 @@ namespace FollowerFavorCarryLimitPatcher
 
         private static void CanRunPatch(IRunnabilityState state)
         {
-            switch (state.Settings.GameRelease)
+            switch (state.Settings.GameRelease.ToCategory())
             {
-                case GameRelease.SkyrimLE:
-                case GameRelease.SkyrimSE:
+                case GameCategory.Skyrim:
                     if (File.Exists(Path.Combine(state.Settings.DataFolderPath, "Scripts\\ANDR_FollowerFavorCarryLimitScript.pex")) == false)
                     {
                         throw new Exception("Cannot find Scripts\\ANDR_FollowerFavorCarryLimitScript.pex. Make sure you have Andrealphus' Gameplay Tweaks - ANDR Tweaks 01 - Follower Favor Carry Limit installed.");

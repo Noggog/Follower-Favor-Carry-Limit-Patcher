@@ -16,14 +16,8 @@ namespace FollowerFavorCarryLimitPatcher
             return await SynthesisPipeline.Instance
                 .AddRunnabilityCheck(CanRunPatch)
                 .AddPatch<ISkyrimMod, ISkyrimModGetter>(RunPatch)
-                .Run(args, new RunPreferences()
-                {
-                    ActionsForEmptyArgs = new RunDefaultPatcher()
-                    {
-                        IdentifyingModKey = "YourPatcher.esp",
-                        TargetRelease = GameRelease.SkyrimSE,
-                    }
-                });
+                .SetTypicalOpen(GameRelease.SkyrimSE, "YourPatcher.esp")
+                .Run(args);
         }
 
         private static void CanRunPatch(IRunnabilityState state)
@@ -70,9 +64,9 @@ namespace FollowerFavorCarryLimitPatcher
 
                 foreach (var faction in npc.Factions)
                 {
-                    if (!faction.Faction.TryResolve(state.LinkCache, out var fac) || fac.EditorID != "PotentialFollowerFaction") continue;
-
+                    if (!faction.Faction.Equals(Skyrim.Faction.PotentialFollowerFaction)) continue;
                     (state.PatchMod.Npcs.GetOrAddAsOverride(npc).VirtualMachineAdapter ??= new VirtualMachineAdapter()).Scripts.Add(FFCLS);
+                    break;
                 }
 
             }
